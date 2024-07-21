@@ -7,7 +7,7 @@ import { ListComponent } from "../../components/list/list.component"
   selector: 'dashboard',
   standalone: true,
   templateUrl: './dashboard.component.html',
-  imports: [RouterOutlet, RouterLink, ButtonComponent, ListComponent]
+  imports: [RouterLink, ButtonComponent, ListComponent]
 })
 
 export class DashboardComponent {}
