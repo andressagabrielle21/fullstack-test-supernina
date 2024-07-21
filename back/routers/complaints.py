@@ -1,29 +1,52 @@
 from back.schemas.complaints import ComplaintSchema, ComplaintList, ComplaintUserSchema, ComplaintUserList
 from back.schemas.group_bys import *
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
+from typing import Optional
+from datetime import datetime
 from back.database.database import client
 from http import HTTPStatus
 
 router = APIRouter(prefix='/complaints', tags=['complaints'])
 
 @router.get('/', response_model=ComplaintUserList)
-def get_complaints():
-    complaints = client.get_complaints()
+def get_complaints(
+    from_date: Optional[datetime] = Query(None),
+    to_date: Optional[datetime] = Query(None),
+    date: datetime
+):
+    complaints = client.get_complaints().filter(date)
+    # date = client.get_complaints().filter(date)
+
+    # if from_date:
+    #     query = query.filter(date >= from_date)
+    # if to_date:
+    #     query = query.filter(models.Complaint.date <= to_date)
+
     complaints.sort(key=lambda x: x['id'])
+
+    if complaints is None:
+    # if not (from_date >= date or date <= to_date):
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Complaint not found.")
     return {'complaints': complaints}
 
-@router.get('/{complaint_id}', response_model=ComplaintSchema)
+@router.get('/{complaint_id}', response_model=ComplaintUserSchema)
 def get_complaint(complaint_id: str):
     complaint = client.get_complaint(complaint_id)
+    user = client.get_user()
     
     if complaint is None:
         raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Complaint not found.")
-
     return complaint
 
-# @router.get('/user/{user_id}', response_model=ComplaintList)
-# def get_complaints_from_user(user_id: str):
-#     # Implement your function here!
+@router.get('/user/{user_id}', response_model=ComplaintList)
+def get_complaints_from_user(user_id: str):
+    user = client.get_user(user_id)
+
+    if user is None:
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="User not found.")
+    
+    complaintByUser = client.get_complaints().filter(user)
+    return {'complaintByUser': complaintByUser}
 
 @router.get('/group/types', response_model=GroupByTypes)
 def get_complaints_group_by_types():
