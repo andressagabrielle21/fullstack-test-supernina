@@ -23,10 +23,21 @@
 
     <input type="date" class="border-none rounded-lg p-4 bg-[#F1ECFF] text-[#515151] italic">
 
-    <button-component theme="dark" buttonName="Limpar"/>
+    <button-component theme="dark" buttonName="Limpar" (click)="logMessage()"/>
     <button-component theme="light" buttonName="Filtrar"/>
 
     <list-component />
+
+    @if (data) {
+      @for (complaints of data; track complaints.complaints) {
+        {{complaints}}
+        @for (item of complaints; track item.id) {
+          <span>{{item.id}}</span>
+        }
+      }
+    }   
+
+    <!-- {{data.complaints}} -->
 
   </div>
   
