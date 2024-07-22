@@ -10,24 +10,29 @@ import { DataService } from '../../app.service';
   imports: [ButtonComponent, RouterLink]
 })
 export class ComplaintComponent implements OnInit{
-  @Input() complaintId = '';
+  @Input() id = '';
 
   data: any;
+  complaint: any
 
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.dataService.getData().subscribe(response => {
       this.data = response;
+      this.complaint = this.data.complaints.find((item: any) => item.id === this.id);
     });
   }
 
-  // ngOnInit(): void {
-  //   this.dataService.getData().subscribe(params => {
-  //     const id = params['id'];
-  //     this.loadComplaint(id);
-  //   });
-  // }
+  filterComplaint(): void {
+    this.complaint = this.data.complaints.find((item: any) => item.id === this.id);
+  }
+  
+
+  logMessage(): void {
+    console.log(this.complaint);
+  }
+
 
   // loadComplaint(id: string): void {
   //   this.dataService.getComplaintById(id).subscribe(response => {

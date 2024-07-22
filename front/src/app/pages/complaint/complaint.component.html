@@ -1,23 +1,22 @@
 <main>
-  @if (data) {
-    @for (item of data.complaints; track item.id) {
+
       <div class="content mx-[156px] ">
         <div class="flex gap-5 items-end mb-[64px]">
           <a routerLink="/">
             <button-component theme="dark" buttonName="🔚"/> 
           </a>
-          <h1 class="text-[32px] font-bold mt-[64px]">Ocorrência ID {{item.id}} - {{item.date}}</h1>
+          <h1 class="text-[32px] font-bold mt-[64px]">Ocorrência ID {{complaint.id}} - {{complaint.id}}</h1>
         </div>
     
         <div class="flex gap-5">
           <div class="flex w-[15%] flex-col mb-[16px]">
             <span>Ocorrido em </span>
-            <span class="bg-[#E9E8EB] rounded-[100px] py-[10px] text-center font-medium">{{item.date}}</span>
+            <span class="bg-[#E9E8EB] rounded-[100px] py-[10px] text-center font-medium">{{complaint.date}}</span>
           </div>
       
           <div class="w-[15%] flex flex-col">
             <span>Data do registro </span>
-            <span class="bg-[#E9E8EB] rounded-[100px] py-[10px] text-center font-medium">{{item.date}}</span>
+            <span class="bg-[#E9E8EB] rounded-[100px] py-[10px] text-center font-medium">{{complaint.date}}</span>
           </div>
         </div>
     
@@ -28,40 +27,38 @@
           <div class="flex justify-between items-center py-5">
             <div class="flex flex-col">
               <span class="text-black text-[14px] font-semibold">SITUAÇÃO</span>
-              <span class="text-[16px] text-[#706F71]">{{item.situation}}</span>
+              <span class="text-[16px] text-[#706F71]">{{complaint.situation}}</span>
             </div>
             <div class="flex flex-col">
               <span class="text-black text-[14px] font-semibold">GÊNERO</span>
-              <span class="text-[16px] text-[#706F71]">{{item.user_gender}}</span>
+              <span class="text-[16px] text-[#706F71]">{{complaint.user_gender}}</span>
             </div>
             <div class="flex flex-col">
               <span class="text-black text-[14px] font-semibold">ETNIA</span>
-              <span class="text-[16px] text-[#706F71]">{{item.user_ethnicity}}</span>
+              <span class="text-[16px] text-[#706F71]">{{complaint.user_ethnicity}}</span>
             </div>
             <div class="flex flex-col">
               <span class="text-black text-[14px] font-semibold">IDADE</span>
-              <span class="text-[16px] text-[#706F71]">{{item.user_birthdate}}</span>
+              <span class="text-[16px] text-[#706F71]">{{complaint.user_birthdate}}</span>
             </div>
             <div class="flex flex-col">
               <span class="text-black text-[14px] font-semibold">BAIRRO</span>
-              <span class="text-[16px] text-[#706F71]">{{item.neighborhood}}</span>
+              <span class="text-[16px] text-[#706F71]">{{complaint.neighborhood}}</span>
             </div>
           </div>
     
           <div class="flex flex-col gap-3 mt-[30px]">
             <span class="text-black text-[14px] font-semibold">RELATO</span>
-            <span class="bg-white p-5 text-[16px] rounded-[16px]">{{item.description}}</span>
+            <span class="bg-white p-5 text-[16px] rounded-[16px]">{{complaint.description}}</span>
           </div>
     
           <div class="flex flex-col gap-2 mt-[48px]">
             <span>Tipo de agressão</span>
-            <button-component buttonName={{item.type}} theme ="list"/>
+            <button-component buttonName={{complaint.type}} theme ="list"/>
           </div>
     
         </div>
     
       </div>
       
-    }
-  }
-</main>
+</main> 
