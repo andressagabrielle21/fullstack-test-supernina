@@ -8,55 +8,18 @@
         <th class="text-left w-[20%] text-[#706F71] text-[16px]">Tipo de Agressão</th>
       </tr>
     </thead>
+    
     <tbody>
-      <tr class="rounded-lg bg-[#F8F8F8]">
-        <td class="px-[24px] py-[22px]">668c36d8e3872b4344d4b38c</td>
-        <td>República</td>
-        <td>2024-07-08T15:58:32</td>
-        <td> <button-component theme="list" buttonName="PERSEGUIÇÃO"/> </td>
-      </tr>
-      <tr class="rounded-lg bg-[#F8F8F8]">
-        <td class="px-[24px] py-[22px]">668c36d8e3872b4344d4b38c</td>
-        <td>Braz</td>
-        <td>2024-07-08T15:58:32</td>
-        <td> <button-component theme="list" buttonName="PERSEGUIÇÃO"/> </td>
-      </tr>
-      <tr class="rounded-lg bg-[#F8F8F8]">
-        <td class="px-[24px] py-[22px]">668c36d8e3872b4344d4b38c</td>
-        <td>Taquacara</td>
-        <td>2024-07-08T15:58:32</td>
-        <td> <button-component theme="list" buttonName="PERSEGUIÇÃO"/> </td>
-      </tr>
-      <tr class="rounded-lg bg-[#F8F8F8]">
-        <td class="px-[24px] py-[22px]">668c36d8e3872b4344d4b38c</td>
-        <td>Braz</td>
-        <td>2024-07-08T15:58:32</td>
-        <td> <button-component theme="list" buttonName="PERSEGUIÇÃO"/> </td>
-      </tr>
-      <tr class="rounded-lg bg-[#F8F8F8]">
-        <td class="px-[24px] py-[22px]">668c36d8e3872b4344d4b38c</td>
-        <td>República</td>
-        <td>2024-07-08T15:58:32</td>
-        <td> <button-component theme="list" buttonName="PERSEGUIÇÃO"/> </td>
-      </tr>
-      <tr class="rounded-lg bg-[#F8F8F8]">
-        <td class="px-[24px] py-[22px]">668c36d8e3872b4344d4b38c</td>
-        <td>República</td>
-        <td>2024-07-08T15:58:32</td>
-        <td> <button-component theme="list" buttonName="PERSEGUIÇÃO"/> </td>
-      </tr>
-      <tr class="rounded-lg bg-[#F8F8F8]">
-        <td class="px-[24px] py-[22px]">668c36d8e3872b4344d4b38c</td>
-        <td>República</td>
-        <td>2024-07-08T15:58:32</td>
-        <td> <button-component theme="list" buttonName="PERSEGUIÇÃO"/> </td>
-      </tr>
-      <tr class="rounded-lg bg-[#F8F8F8]">
-        <td class="px-[24px] py-[22px]">668c36d8e3872b4344d4b38c</td>
-        <td>República</td>
-        <td>2024-07-08T15:58:32</td>
-        <td> <button-component theme="list" buttonName="PERSEGUIÇÃO"/> </td>
-      </tr>
+      @if (data) {
+        @for (item of data.complaints; track item.id) {
+          <tr class="rounded-lg bg-[#F8F8F8]">
+            <td class="px-[24px] py-[22px]">{{item.id}}</td>
+            <td>{{item.neighborhood}}</td>
+            <td>{{item.date}}</td>
+            <td> <button-component theme="list" buttonName={{item.type}}/> </td>
+          </tr>
+        }
+      }
     </tbody>
   </table>
 </div>

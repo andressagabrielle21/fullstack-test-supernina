@@ -1,5 +1,5 @@
 
-import { Component, Injectable, OnInit } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import {RouterLink} from "@angular/router"
 import { ButtonComponent } from "../../components/button/button.component"
 import { ListComponent } from "../../components/list/list.component"
@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
 
   //TESTE
   logMessage(): void {
-    console.log(this.data);
+    for (const { id, neighborhood } of this.data.complaints) {
+      console.log(`ID: ${id}, BAIRRO: ${neighborhood}`);
+    }
   }
 }
