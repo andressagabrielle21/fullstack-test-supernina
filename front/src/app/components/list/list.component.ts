@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core"
+import { RouterLink } from "@angular/router";
 import { ButtonComponent } from "../button/button.component";
 import { DataService } from "../../app.service";
 
@@ -6,15 +7,10 @@ import { DataService } from "../../app.service";
   selector: "list-component",
   standalone: true,
   templateUrl: "./list.component.html",
-  imports: [ButtonComponent]
+  imports: [RouterLink, ButtonComponent]
 })
 
 export class ListComponent implements OnInit{
-  // @Input() id = '';
-  // @Input() neighborhood = '';
-  // @Input() date = '';
-  // @Input() type = '';
-
   data: any;
 
   constructor(private dataService: DataService) {}

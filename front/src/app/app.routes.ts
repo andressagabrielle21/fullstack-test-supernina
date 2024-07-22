@@ -10,7 +10,7 @@ export const routes: Routes = [
   },
   {
     path: 'complaint',
-    title: 'Complaint #1',
+    title: 'Complaint {{complaint.id}}',
     component: ComplaintComponent
   }
 ];

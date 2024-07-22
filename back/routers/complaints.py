@@ -41,7 +41,7 @@ def get_complaints():
 @router.get('/{complaint_id}', response_model=ComplaintUserSchema)
 def get_complaint(complaint_id: str):
     complaint = client.get_complaint(complaint_id)
-    user = client.get_user()
+    # user = client.get_user()
     
     if complaint is None:
         raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Complaint not found.")

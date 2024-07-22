@@ -13,11 +13,16 @@
       @if (data) {
         @for (item of data.complaints; track item.id) {
           <tr class="rounded-lg bg-[#F8F8F8]">
-            <td class="px-[24px] py-[22px]">{{item.id}}</td>
-            <td>{{item.neighborhood}}</td>
-            <td>{{item.date}}</td>
-            <td> <button-component theme="list" buttonName={{item.type}}/> </td>
-          </tr>
+              <td class="px-[24px] py-[22px]">{{item.id}}</td>
+              <td>{{item.neighborhood}}</td>
+              <td>{{item.date}}</td>
+              <td> <button-component theme="list" buttonName={{item.type}}/> </td>
+              <td> 
+                <a routerLink="/complaint:{{item.id}}"> 
+                  <button-component theme="dark" buttonName="➕"/> 
+                </a> 
+              </td>
+            </tr>
         }
       }
     </tbody>
