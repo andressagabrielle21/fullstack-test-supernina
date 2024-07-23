@@ -23,20 +23,8 @@ export class ComplaintComponent implements OnInit{
       this.complaint = this.data.complaints.find((item: any) => item.id === this.id);
     });
   }
-
-  filterComplaint(): void {
-    this.complaint = this.data.complaints.find((item: any) => item.id === this.id);
-  }
   
-
-  logMessage(): void {
-    console.log(this.complaint);
-  }
-
-
-  // loadComplaint(id: string): void {
-  //   this.dataService.getComplaintById(id).subscribe(response => {
-  //     this.data.complaints.complaintId = response;
-  //   });
+  // logMessage(): void {
+  //   console.log(this.complaint);
   // }
 }
